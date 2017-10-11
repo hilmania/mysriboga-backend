@@ -13,7 +13,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-speech font-green"></i>
-                    <span class="caption-subject bold font-green uppercase">Tambah Kota Where to Buy</span>
+                    <span class="caption-subject bold font-green uppercase">Tambah Lokasi Where to Buy</span>
                 </div>
             </div>
             <div class="portlet-body form">
@@ -21,12 +21,36 @@
                 <form role="form" method="POST" action="{{ url('general/kotabuy/add') }}" class="form-horizontal" enctype="multipart/form-data">
                 {{ csrf_field() }}
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Kota Where to Buy</label>
+                        <label class="col-md-3 control-label">Nama tempat</label>
                         <div class="col-md-4">
-                            <input type="text" placeholder="Semarang" class="form-control" name="kota" required /> </div>
+                            <input type="text" placeholder="Lokasi A" class="form-control" name="lokasi" required /> </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Thumbnail untuk Kota</label>
+                        <label class="col-md-3 control-label">Kota</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Semarang" class="form-control" name="kota" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Alamat</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" rows="3" name="alamat" required></textarea>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Latitude</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="" class="form-control" name="latitude" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Longitude</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="" class="form-control" name="longitude" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Thumbnail</label>
                         <div class="col-md-4">
                             <input type="file" name="thumbnail" required/>
                             <span class="help-block">Resolusi maksimal 600 x 414 piksel, dengan format PNG atau JPG</span>

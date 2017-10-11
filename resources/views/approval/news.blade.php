@@ -28,7 +28,7 @@
 	                        <td style="display: none"></td>
                             <td>{{ $news->submit }}</td>                    
 	                        <td>{{ $news->judul_berita }}</td>
-	                        <td>{{ $news->isi_berita }}</td>
+	                        <td>{{ strip_tags($news->isi_berita) }}</td>
 	                        <td>
                                 <img src="{{ asset('') }}{{$news->cover_berita}}" width="180" height="125" />
                             </td>

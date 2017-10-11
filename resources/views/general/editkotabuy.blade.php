@@ -21,10 +21,34 @@
                 <form role="form" method="POST" action="{{ url('general/kotabuy/update') }}" class="form-horizontal">
                 {{ csrf_field() }}
                     <div class="form-group">
+                        <label class="col-md-3 control-label">Nama tempat</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Lokasi A" class="form-control" name="lokasi" required value="{{ $data->nama_lokasi }}"/> </div>
+                            <input type="text" placeholder="Semarang" class="form-control" name="id" required value="{{ $data->id }}" style="display:none"/>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-3 control-label">Kota</label>
                         <div class="col-md-4">
-                            <input type="text" placeholder="Semarang" class="form-control" name="id" required value="{{ $data->id }}" style="display:none"/>
+                            
                             <input type="text" placeholder="Semarang" class="form-control" name="kota" required value="{{ $data->kota }}" /> </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Alamat</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" rows="3" name="alamat" required>{{ $data->alamat }}</textarea>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Latitude</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="" class="form-control" name="latitude" required value="{{ $data->latitude }}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Longitude</label>
+                        <div class="col-md-4">
+                            <input type="text" placeholder="" class="form-control" name="longitude" required value="{{ $data->longitude }}"/>
+                        </div>
                     </div>
                     
                     <div class="form-actions" >

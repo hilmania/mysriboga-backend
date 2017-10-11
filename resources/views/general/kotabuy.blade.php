@@ -13,17 +13,21 @@
             <div class="portlet-title">
                 <div class="caption font-dark">
                     <i class="icon-settings font-dark"></i>
-                    <span class="caption-subject bold uppercase">Kota Where to Buy</span>
+                    <span class="caption-subject bold uppercase">Lokasi Where to Buy</span>
                 </div>
                 <div class="tools"> </div>
             </div>
-            <a class="btn btn-large green-meadow" href="{{ url('general/kotabuy/form') }}">+ Tambah Kota untuk Where to Buy</a>
+            <a class="btn btn-large green-meadow" href="{{ url('general/kotabuy/form') }}">+ Tambah lokasi Where to Buy</a>
             <div class="portlet-body">
                 <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_2">
                     <thead>
                         <tr>
                             <th style="display: none"> </th>
+                            <th class="none">Nama Tempat</th>
                             <th class="none">Kota</th>
+                            <th class="none">Alamat</th>
+                            <th class="none">Latitude</th>
+                            <th class="none">Longitude</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -31,7 +35,11 @@
                         @foreach ( $data as $dt )
                         <tr class="odd gradeX">
                             <td style="display: none"></td>
+                            <td>{{ $dt->nama_lokasi }}</td>
                             <td>{{ $dt->kota }}</td>
+                            <td>{{ $dt->alamat }}</td>
+                            <td>{{ $dt->latitude }}</td>
+                            <td>{{ $dt->longitude }}</td>
                             <td>
                                 <a class="btn btn-xs default" href="{{ url('general/kotabuy/edit/'.$dt->id) }}" 
                                     >Edit</a>

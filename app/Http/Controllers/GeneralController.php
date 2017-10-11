@@ -127,7 +127,7 @@ class GeneralController extends Controller
 
             $header = 'Kota Where to Buy';
 
-            $data = \DB::table('info_kota')->get();
+            $data = \DB::table('info_lokasi')->get();
 
             return view('general/kotabuy', compact('user', 'title', 'data', 'header'));
         }
@@ -143,7 +143,7 @@ class GeneralController extends Controller
 
         if ( $user->tipe_user == 0 || $user->tipe_user == 1 ) {
 
-            $delete = \DB::table('info_kota')->where('id', $id)->delete();
+            $delete = \DB::table('info_lokasi')->where('id', $id)->delete();
             $request->session()->flash('alert-success', 'Berhasil dihapus');
 
             return back();
@@ -179,14 +179,18 @@ class GeneralController extends Controller
             $img = $request->file('thumbnail');
             $imgname = preg_replace('/\s+/', '-', $request->kota).'.'.$img->getClientOriginalExtension();
 
-            $thmbpath = public_path('/assets/images/gallery/thumbnail/');
+            $thmbpath = public_path('/assets/images/location/thumbnail/');
+            $sldpath = public_path('/assets/images/location/main/');
 
             $thumbnail = Image::make($img->getRealPath())->resize(200, 200);
             $thumbnail->save($thmbpath.'/'.$imgname, 80);
 
-            $dbthmb = 'public/assets/images/gallery/album/thumbnail/'.$imgname;
+            $dbthmb = 'public/assets/images/location/thumbnail/'.$imgname;
+            $sldthmb = 'public/assets/images/location/main/'.$imgname;
 
-            $add = \DB::table('info_kota')->insert(['kota' => $request->kota, 'url_thumbnail' => $dbthmb]);
+            $img->move($sldpath, $imgname);
+
+            $add = \DB::table('info_lokasi')->insert(['kota' => $request->kota, 'nama_lokasi' => $request->lokasi, 'alamat' => $request->alamat, 'latitude' => $request->latitude, 'longitude' => $request->longitude, 'url_gambar' => $sldthmb, 'url_thumbnail' => $dbthmb]);
 
             $request->session()->flash('alert-success', 'Berhasil ditambahkan');
 
@@ -206,7 +210,7 @@ class GeneralController extends Controller
 
             $header = 'General Settings';
             
-            $data = \DB::table('info_kota')->where('id', $id)->first();
+            $data = \DB::table('info_lokasi')->where('id', $id)->first();
 
             return view('general/editkotabuy', compact('user', 'title', 'data', 'header'));
         }
@@ -224,7 +228,7 @@ class GeneralController extends Controller
 
             // dd($request);
 
-            $update = \DB::table('info_kota')->where('id', $request->id)->update(['kota' => $request->kota]);
+            $update = \DB::table('info_lokasi')->where('id', $request->id)->update(['kota' => $request->kota, 'nama_lokasi' => $request->lokasi, 'alamat' => $request->alamat, 'latitude' => $request->latitude, 'longitude' => $request->longitude]);
 
             $request->session()->flash('alert-success', 'Berhasil diubah');
 
