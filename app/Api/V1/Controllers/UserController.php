@@ -4,7 +4,10 @@ namespace App\Api\V1\Controllers;
 
 use Auth;
 use JWTAuth;
+use Validator;
+use DB;
 use App\User;
+use App\Api\V1\Controllers\HelperController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -159,5 +162,109 @@ class UserController extends Controller
                 'status' => 'Gagal',
                 'message' => 'Forbidden action',
             ], 403);
+    }
+
+    public function forgot(Request $request)
+    {
+        $credentials = $request->only(
+            'email'
+        );
+  
+        $validator = Validator::make($credentials, [
+            'email' => 'required|email'
+        ]);
+  
+        if($validator->fails()) {
+          return response()->json(array(
+            'status' => 'error',
+            'message' => 'data belum sesuai!'),
+            200
+          );
+        }
+  
+        $dataUser = User::where('email', $credentials['email'])->first();
+        if (empty($dataUser)){
+             return response()->json(array(
+                 'status' => 'error',
+                 'message' => 'data user dengan email tersebut tidak ada!'),
+             200
+             );
+         } else {
+              $helper = new HelperController();
+              $tipe = 'reset-password';
+              $helper->sendMail($credentials['email'], $tipe);
+  
+              return response()->json(array(
+                'status' => 'OK',
+                'message' => 'Email berisi link reset password sudah dikirim, silahkan cek email Anda'),
+                200
+              );
+         }
+    }
+
+    public function resetForm(Request $request)
+    {
+        $token = $request['code'];
+
+        // $row = User::where('remember_token', $token)->first();
+        $row = User::where(DB::raw('BINARY `remember_token`'), $token)->first();
+        
+        if(empty($row)){
+        // return view('errors.404');
+            return response()->json(array(
+                'status' => 'error',
+                'message' => 'Kode verifikasi salah'
+            ),200);
+        }else{
+        // return view('form.forgot-password',compact('token','row'));
+            return response()->json(array(
+                'status' => 'OK',
+                'message' => 'Kode terverifikasi'
+            ),200);
+        }
+    }
+
+    public function doReset(Request $request, $token)
+    {
+		$newPassword = $request['password'];
+
+        $reset = User::where('remember_token', $token)
+        ->select('email', 'remember_token')
+        ->first();
+
+    	if(empty($reset)){
+            return response()->json(array(
+              'status' => 'error',
+              'message' => 'email tidak terdaftar!'),
+              200
+            );
+    	}else{
+      		$user=User::where('email',$reset->email)->first();
+
+          	$user->password = $newPassword;
+            $user->remember_token = "";
+          	$user->save();
+
+            return response()->json(array(
+                'status' => 'OK',
+                'message' => 'update password berhasil'),
+                200
+            );
+    	}
+    }
+
+    public function timeout(Request $request)
+    {
+
+        $token = $request['code'];
+
+        $reset = User::where('remember_token', $token)
+        ->select('email', 'remember_token')
+        ->first();
+
+        $user=User::where('email',$reset->email)->first();
+        
+        $user->remember_token = "";
+        $user->save();
     }
 }
