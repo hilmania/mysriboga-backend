@@ -12,7 +12,9 @@ $api->version('v1', function (Router $api) {
         $api->post('recovery', 'App\\Api\\V1\\Controllers\\ForgotPasswordController@sendResetEmail');
         // $api->post('reset', 'App\\Api\\V1\\Controllers\\ResetPasswordController@resetPassword');
         $api->post('forgot', 'App\\Api\\V1\\Controllers\\UserController@forgot');
-        $api->post('reset', 'App\\Api\\V1\\Controllers\\UserController@resetForm');
+        $api->post('reset','App\\Api\\V1\\Controllers\\UserController@resetForm');
+        $api->post('timeout', 'App\\Api\\V1\\Controllers\\UserController@timeout');
+        $api->post('doReset','App\\Api\\V1\\Controllers\\UserController@doReset');
     });
 
     $api->group(['middleware' => ['jwt.auth', 'cors']], function(Router $api) {
