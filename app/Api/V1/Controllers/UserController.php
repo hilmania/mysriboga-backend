@@ -227,12 +227,13 @@ class UserController extends Controller
         }
     }
 
-    public function doReset(Request $request, $token)
+    public function doReset(Request $request)
     {
+        $token = $request['token'];
 		    $newPassword = $request['password'];
         $confirmPassword = $request['confirm_password'];
 
-        if (strcmp($newPassword, $confirmPassword)){
+        if (strcmp($newPassword, $confirmPassword) == 0){
             $reset = User::where('remember_token', $token)
               ->select('email', 'remember_token')
               ->first();
@@ -240,7 +241,8 @@ class UserController extends Controller
             if(empty($reset)){
                   return response()->json(array(
                     'status' => 'error',
-                    'message' => 'email tidak terdaftar!'),
+                    'message' => 'Data tidak ditemukan!',
+                    'data' => $reset),
                     200
                   );
             }else{
