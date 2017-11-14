@@ -197,6 +197,7 @@ Route::get('disapprove/product/{id}', 'ApprovalController@disappProduk');
 Route::get('disapprove/album/{id}', 'ApprovalController@disappAlbum');
 Route::get('disapprove/training/{id}', 'ApprovalController@disappPelatihan');
 Route::get('disapprove/registration/{id}', 'ApprovalController@disappRegist');
+Route::get('disapprove/berita/{id}', 'ApprovalController@disappBerita');
 
 // berita
 Route::get('berita', 'BeritaController@index');
