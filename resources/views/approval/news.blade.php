@@ -6,8 +6,8 @@
 @endsection
 
 @section('content')
-<div class="row widget-row">  
-    <div class="col-lg-12 col-xs-12 col-sm-12"> 
+<div class="row widget-row">
+    <div class="col-lg-12 col-xs-12 col-sm-12">
         <div class="portlet light bordered">
 	        <div class="portlet-body">
 	            <table class="table table-striped table-bordered table-hover table-checkable order-column" id="berita">
@@ -16,7 +16,7 @@
 	                        <th style="display: none"> </th>
                             <th>Input oleh</th>
 	                        <th class="none">Judul Berita</th>
-	                        <th class="none">Isi Berita</th> 
+	                        <th class="none">Isi Berita</th>
 	                        <th class="min-phone-l">Cover Berita</th>
                             <th class="none">Status</th>
 	                        <th>Aksi</th>
@@ -26,7 +26,7 @@
 	                    @foreach( $berita as $news )
 	                    <tr class="odd gradeX">
 	                        <td style="display: none"></td>
-                            <td>{{ $news->submit }}</td>                    
+                            <td>{{ $news->submit }}</td>
 	                        <td>{{ $news->judul_berita }}</td>
 	                        <td>{{ strip_tags($news->isi_berita) }}</td>
 	                        <td>
@@ -36,16 +36,16 @@
                             <td>
 	                            <a class="btn btn-xs green-meadow" href="{{ url('approve/berita/'.$news->id) }}"
                                     style="display: <?php if ( $news->status_approval == 1) echo 'none'?>"
-	                                onclick="return confirm('Anda yakin akan approve ini?');">Approve resep</a>
+	                                onclick="return confirm('Anda yakin akan approve ini?');">Approve berita</a>
                                 <a class="btn btn-xs red" href="{{ url('disapprove/berita/'.$news->id) }}"
                                     style="display: <?php if ( $news->status_approval == 0) echo 'none'?>"
-                                    onclick="return confirm('Anda yakin akan disapprove ini?');">Disapprove album</a>
+                                    onclick="return confirm('Anda yakin akan disapprove ini?');">Disapprove berita</a>
                             </td>
 	                    </tr>
 	                    @endforeach
 	                </tbody>
 	            </table>
-	            
+
 	        </div>
         </div>
     </div>
@@ -89,8 +89,8 @@ var TableDatatablesManaged = function () {
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-            // So when dropdowns used the scrollable div should be removed. 
+            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+            // So when dropdowns used the scrollable div should be removed.
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
@@ -157,8 +157,8 @@ var TableDatatablesManaged = function () {
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-            // So when dropdowns used the scrollable div should be removed. 
+            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+            // So when dropdowns used the scrollable div should be removed.
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
@@ -225,8 +225,8 @@ var TableDatatablesManaged = function () {
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-            // So when dropdowns used the scrollable div should be removed. 
+            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+            // So when dropdowns used the scrollable div should be removed.
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
@@ -293,8 +293,8 @@ var TableDatatablesManaged = function () {
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-            // So when dropdowns used the scrollable div should be removed. 
+            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+            // So when dropdowns used the scrollable div should be removed.
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
@@ -361,8 +361,8 @@ var TableDatatablesManaged = function () {
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-            // So when dropdowns used the scrollable div should be removed. 
+            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+            // So when dropdowns used the scrollable div should be removed.
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
@@ -429,8 +429,8 @@ var TableDatatablesManaged = function () {
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-            // So when dropdowns used the scrollable div should be removed. 
+            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+            // So when dropdowns used the scrollable div should be removed.
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
@@ -454,7 +454,7 @@ var TableDatatablesManaged = function () {
             ] // set first column as a default sort by asc
         });
 
-   
+
 
         var tableWrapper = jQuery('#sample_22_wrapper');
 
@@ -499,8 +499,8 @@ var TableDatatablesManaged = function () {
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
-            // So when dropdowns used the scrollable div should be removed. 
+            // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
+            // So when dropdowns used the scrollable div should be removed.
             //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
@@ -554,14 +554,14 @@ var TableDatatablesManaged = function () {
             initTable5();
             initTable6();
             initTable7();
-           
+
         }
 
     };
 
 }();
 
-if (App.isAngularJsApp() === false) { 
+if (App.isAngularJsApp() === false) {
     jQuery(document).ready(function() {
         TableDatatablesManaged.init();
     });
