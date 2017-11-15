@@ -116,11 +116,15 @@ class UserController extends Controller
     {
         $industri = \DB::table('jenis_industri')->get();
 
-        $usaha = \DB::table('jenis_usaha')->get();
+        $usaha = \DB::table('jenis_usaha')
+        ->orderBy('usaha','asc')
+        ->get();
 
         $kapasitas = \DB::table('kapasitas_produksi')->get();
 
-        $kota = \DB::table('user_kota')->get();
+        $kota = \DB::table('user_kota')
+        ->orderBy('kota','asc')
+        ->get();
 
         return response()->json([
             'status' => 'OK',
