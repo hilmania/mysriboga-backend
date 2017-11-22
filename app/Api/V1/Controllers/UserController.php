@@ -114,7 +114,9 @@ class UserController extends Controller
 
     public function getDropDown()
     {
-        $industri = \DB::table('jenis_industri')->get();
+        $industri = \DB::table('jenis_industri')
+        ->orderBy('nama_industri','asc')
+        ->get();;
 
         $usaha = \DB::table('jenis_usaha')
         ->orderBy('usaha','asc')
